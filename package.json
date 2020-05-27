@@ -1,0 +1,9 @@
+{
+  "name": "irc-downloader",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "xdcc": "0.2.2",
+    "progress": "2.0.3"
+  }
+}
