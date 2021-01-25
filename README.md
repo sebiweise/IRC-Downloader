@@ -1,5 +1,5 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/sebiweise/IRC-Downloader)
-![Maintenance](https://img.shields.io/maintenance/no/2021)
+![Maintenance](https://img.shields.io/maintenance/no/2020)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sebiweise/IRC-Downloader)
 ![GitHub last commit](https://img.shields.io/github/last-commit/sebiweise/IRC-Downloader)
 
