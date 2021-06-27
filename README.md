@@ -2,7 +2,7 @@
 ![Maintenance](https://img.shields.io/maintenance/no/2020)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/sebiweise/IRC-Downloader)
 ![GitHub last commit](https://img.shields.io/github/last-commit/sebiweise/IRC-Downloader)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/sebiweise/irc-downloader/badge)](https://www.codefactor.io/repository/github/sebiweise/irc-downloader)
 
 # IRC-Downloader
 
