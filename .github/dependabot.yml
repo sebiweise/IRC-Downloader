@@ -1,6 +1,65 @@
+# Dependabot, set up the same way in every repository of sebiweise: weekly on
+# Monday morning, a week of cooldown, few grouped pull requests. Only the
+# directories, the target branch and the ignore list differ per repository.
+# Dependabot reads this file from the default branch only.
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  # npm also covers pnpm (pnpm-lock.yaml).
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "weekly"
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    # Version updates wait a week: longer than pnpm's minimumReleaseAge, and
+    # most hijacked releases are pulled by then. Security updates are not delayed.
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(dev-deps)"
+    # The first matching group wins.
+    groups:
+      # Minor and patch updates of everything in one pull request.
+      npm-minor-patch:
+        applies-to: version-updates
+        update-types: [minor, patch]
+      # Majors of packages that only work together, one pull request per
+      # family. Groups whose packages a repository does not use stay empty.
+      next-react:
+        update-types: [major]
+        patterns: [next, eslint-config-next, react, react-dom, "@types/react*"]
+      prisma:
+        update-types: [major]
+        patterns: [prisma, "@prisma/*"]
+      better-auth:
+        update-types: [major]
+        patterns: [better-auth, "@better-auth/*"]
+      trpc-tanstack:
+        update-types: [major]
+        patterns: ["@trpc/*", "@tanstack/*"]
+      react-email:
+        update-types: [major]
+        patterns: [react-email, "@react-email/*"]
+      tailwind:
+        update-types: [major]
+        patterns: [tailwindcss, "@tailwindcss/*"]
+      lint-format:
+        update-types: [major]
+        patterns:
+          [
+            eslint,
+            "eslint-*",
+            "@eslint/*",
+            typescript-eslint,
+            prettier,
+            "prettier-*",
+            "@biomejs/*",
+          ]
+      # Security updates in one pull request.
+      npm-security:
+        applies-to: security-updates
+        patterns: ["*"]
